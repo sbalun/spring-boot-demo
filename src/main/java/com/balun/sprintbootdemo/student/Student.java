@@ -1,9 +1,22 @@
 package com.balun.sprintbootdemo.student;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Date;
-
+@Entity // Used for mapping student class to DB
+@Table // Used for mapping student class to DB
 public class Student {
+    @Id // Used for mapping student class to DB
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    ) // Used for mapping student class to DB
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    ) // Used for mapping student class to DB
     private Long id;
     private String name;
     private String email;
