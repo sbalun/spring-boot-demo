@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/student") // URL will be localhost:8090/api/v1/student
 public class StudentController {
-
     private final StudentService studentService;
     @Autowired // This annotation magically instantiates StudentService into this constructor
     public StudentController(StudentService studentService) {
