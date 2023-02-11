@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 // This annotation makes this class a string bean.  Could also use @Component but semantically service better
 // this indicates this will be a service class
@@ -23,6 +24,11 @@ public class StudentService {
     }
 
     public void addNewStudent(Student student) {
+        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+        if(studentOptional.isPresent()){
+            throw new IllegalStateException("email taken homey")
+        }
+        studentRepository.save(student);
         System.out.println(student);
     }
 }
