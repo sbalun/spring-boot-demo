@@ -2,11 +2,10 @@
 package com.balun.sprintbootdemo.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
+
 // This annotation makes this class a string bean.  Could also use @Component but semantically service better
 // this indicates this will be a service class
 @Service
