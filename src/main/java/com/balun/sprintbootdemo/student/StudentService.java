@@ -34,11 +34,11 @@ public class StudentService {
         System.out.println(student);
     }
 
-    public static void deleteStudent(Long id) {
+    public static void deleteStudent(Long studentId) {
         boolean exists = studentRepository.existsById(studentId);
         if(!exists){
             throw new IllegalStateException("Student with student id " + studentId + " does not exist");
-        studentRepository.deleteById(studentId);
         }
+        studentRepository.deleteById(studentId);
     }
 }
