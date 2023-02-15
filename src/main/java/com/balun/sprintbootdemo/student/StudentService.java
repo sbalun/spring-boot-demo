@@ -3,6 +3,8 @@ package com.balun.sprintbootdemo.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,5 +32,13 @@ public class StudentService {
         }
         studentRepository.save(student);
         System.out.println(student);
+    }
+
+    public static void deleteStudent(Long id) {
+        boolean exists = studentRepository.existsById(studentId);
+        if(!exists){
+            throw new IllegalStateException("Student with student id " + studentId + " does not exist");
+        studentRepository.deleteById(studentId);
+        }
     }
 }
