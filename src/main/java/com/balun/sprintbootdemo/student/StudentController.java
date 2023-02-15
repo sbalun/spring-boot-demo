@@ -18,7 +18,7 @@ public class StudentController {
     public List<Student> getStudents(){
         return studentService.getStudents();
     }
-    @PostMapping
+    @PostMapping// Map the REQ body to the student object
     public void registerNewStudent(@RequestBody Student student){
         studentService.addNewStudent(student);
     }
