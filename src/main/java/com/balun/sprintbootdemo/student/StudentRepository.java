@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    // This is jbql not sql
+    // This is jbsql not sql
     // the Student is referring to the @Entity
     @Query("SELECT s FROM Student s where s.email = ?1")
     Optional<Student> findStudentByEmail(String email);
