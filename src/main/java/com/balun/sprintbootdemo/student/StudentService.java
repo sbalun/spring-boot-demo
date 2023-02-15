@@ -1,12 +1,14 @@
 // This is our business layer in our n-tier architecture
 package com.balun.sprintbootdemo.student;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 // This annotation makes this class a string bean.  Could also use @Component but semantically service better
@@ -40,5 +42,14 @@ public class StudentService {
             throw new IllegalStateException("Student with student id " + studentId + " does not exist");
         }
         studentRepository.deleteById(studentId);
+    }
+
+    @Transactional
+    public void updateStudent(Long studentId, String name, String email) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalStateException("Student with student id " + studentId + " does not exist"));
+        if(name != null && name.length() > 0 && !Objects.equals(student.getName(), name)){
+            student.setName(name);
+        }
     }
 }
